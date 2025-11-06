@@ -41,20 +41,20 @@ class Rijandel {
         return Base64.getEncoder().encodeToString(both);
     }
 
-    static String decrypt(String pt, SecretKey key, byte[] iv) throws Exception {
-        Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
-        GCMParameterSpec spec = new GCMParameterSpec(tag_len * 8, iv);
-        cipher.init(Cipher.ENCRYPT_MODE, key, spec);
+    // static String decrypt(String pt, SecretKey key, byte[] iv) throws Exception {
+    //     Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
+    //     GCMParameterSpec spec = new GCMParameterSpec(tag_len * 8, iv);
+    //     cipher.init(Cipher.ENCRYPT_MODE, key, spec);
 
-        byte[] encrypted = cipher.doFinal(pt.getBytes());
+    //     byte[] encrypted = cipher.doFinal(pt.getBytes());
 
-        byte[] both = new byte[encrypted.length + iv.length];
+    //     byte[] both = new byte[encrypted.length + iv.length];
 
-        System.arraycopy(iv, 0, both, 0, iv.length);
-        System.arraycopy(encrypted, 0, both, iv.length, encrypted.length);
+    //     System.arraycopy(iv, 0, both, 0, iv.length);
+    //     System.arraycopy(encrypted, 0, both, iv.length, encrypted.length);
 
-        return Base64.getEncoder().encodeToString(both);
-    }
+    //     return Base64.getEncoder().encodeToString(both);
+    // }
 
     static String decrypt(String ct, SecretKey key) throws Exception {
 
